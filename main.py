@@ -1,8 +1,4 @@
 import os
-try:
-    del os.environ['DISPLAY']
-except:
-    pass
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
