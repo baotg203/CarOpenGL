@@ -19,7 +19,6 @@ Song_Flag=False
 mouse_x, mouse_y = 0, 0
 start_game = 0
 game_over = 0
-credits_sc = 0
 you_win = 0
 carModel = car()
 
@@ -64,33 +63,19 @@ def display():
     if carModel.health <= 0:
         start_game = 2 
         game_over = 1
-    # If User open credits button , Load credits SCREEN with back button
-    if credits_sc == 1:
-        # BACk Button
-        if mouse_x >= 260 and mouse_x <= 460 and mouse_y >= 700-100 and mouse_y <= 700-20:
-            draw_texture(260, 20, 460, 100, BACK_RED)
-        else:
-            draw_texture(260, 20, 460, 100, BACK_YELLOW)
-        draw_texture(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, CREDIT_SCREEN)
-    # if We Are in Start screen , load background with 3 buttons
-    elif start_game == 0:
+    # if We Are in Start screen , load background with 2 buttons
+    if start_game == 0:
         glLoadIdentity()
         # ON START Button
         if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 280 and mouse_y <= 360:
             draw_texture(280, 340, 520, 420, START_RED)
         else:
             draw_texture(280, 340, 520, 420, START_YELLOW)
-        # On CREDITS button
-        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 380 and mouse_y <= 460:
-            draw_texture(280, 240, 520, 320, CREDIT_RED)
-        else:
-            draw_texture(280, 240, 520, 320, CREDIT_YELLOW)
-
         # On EXIT button
-        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 480 and mouse_y <= 560:
-            draw_texture(280, 140, 520, 220, EXIT_RED)
+        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 380 and mouse_y <= 460:
+            draw_texture(280, 240, 520, 320, EXIT_RED)
         else:
-            draw_texture(280, 140, 520, 220, EXIT_YELLOW)
+            draw_texture(280, 240, 520, 320, EXIT_YELLOW)
         draw_texture(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, START_SCREEN)
     # If We are is the game play , then run the game 
     elif start_game == 1:
@@ -299,19 +284,15 @@ def mousePass(x, y):
     mouse_y = y
     # Start
     
-    if start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 280 and y <= 360:
+    if start_game == 0 and x >= 280 and x <= 520 and y >= 280 and y <= 360:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 380 and y <= 460 and start_game == 0:
+    elif start_game == 0 and x >= 280 and x <= 520 and y >= 380 and y <= 460 and start_game == 0:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 480 and y <= 560 and start_game == 0:
-        if On_button == False:
-            sounds[10].play(0)
-            On_button = True
-    elif credits_sc == 1 and x >= 260 and x <= 460 and y >= 600 and y <= 680:
+    elif start_game == 0 and x >= 280 and x <= 520 and y >= 480 and y <= 560 and start_game == 0:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
@@ -335,18 +316,14 @@ def mouse(state, key, x, y):
     """
     mouse function is check it user is on a button and click on it or not
     """
-    global start_game, credits_sc, carModel,game_over,you_win
-    if x >= 280 and x <= 520 and y >= 280 and y <= 360 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
+    global start_game, carModel,game_over,you_win
+    if x >= 280 and x <= 520 and y >= 280 and y <= 360 and key == GLUT_LEFT_BUTTON  and start_game == 0:
         start_game = 1
         sounds[9].stop()
         sounds[4].set_volume(0.2)
         sounds[4].play(0)
-    if x >= 280 and x <= 520 and y >= 380 and y <= 460 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
-        credits_sc = 1
-    if x >= 280 and x <= 520 and y >= 480 and y <= 560 and  key == GLUT_LEFT_BUTTON and start_game == 0 and credits_sc == 0:
-        os._exit(0) 
-    if x >= 260 and x <= 460 and y >= 600 and y <= 680 and key ==GLUT_LEFT_BUTTON and credits_sc == 1:
-        credits_sc = 0
+    if x >= 280 and x <= 520 and y >= 380 and y <= 460 and key == GLUT_LEFT_BUTTON  and start_game == 0:
+        os._exit(0)
     # try Again
     if game_over == 1 and x >= 480 and x <= 720 and y >= 700-250 and y <= 700-150 and key ==GLUT_LEFT_BUTTON:
         carModel = car() # Make a new car or reset all param , we choose to create a new car

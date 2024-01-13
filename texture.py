@@ -5,7 +5,7 @@ from OpenGL.GLUT import *
 
 
 #creating a list of texture names that will be used to identify each texture.
-texture_names = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+texture_names = [i for i in range(0, 20)]
 
 # assigning a unique integer identifier to each texture using global constants, which makes it easier to refer to textures throughout the code.
 STAR = 0
@@ -16,21 +16,18 @@ EXIT_YELLOW = 4
 START_RED = 5
 START_YELLOW = 6
 START_SCREEN = 7
-CREDIT_SCREEN = 8
-CREDIT_RED = 9
-CREDIT_YELLOW = 10
-BACK_YELLOW = 11
-BACK_RED = 12
-BOMB = 13
-PLAY_AGAIN = 14
-TRY_AGAIN_YEL = 15
-TRY_AGAIN_RED = 16
-EXIT2_YEL = 17
-EXIT2_RED = 18
-FINISH_LINE = 19
-YOU_WIN = 20
-HOME_YEL = 21
-HOME_RED = 22
+BACK_YELLOW = 8
+BACK_RED = 9
+BOMB = 10
+PLAY_AGAIN = 11
+TRY_AGAIN_YEL = 12
+TRY_AGAIN_RED = 13
+EXIT2_YEL = 14
+EXIT2_RED = 15
+FINISH_LINE = 16
+YOU_WIN = 17
+HOME_YEL = 18
+HOME_RED = 19
 
 
 def load_texture():
@@ -51,9 +48,6 @@ def load_texture():
     images.append(pygame.image.load("Texture/start_red.png"))
     images.append(pygame.image.load("Texture/start_yellow.png"))
     images.append(pygame.image.load("Texture/start_screen.png"))
-    images.append(pygame.image.load("Texture/credits.png"))
-    images.append(pygame.image.load("Texture/credits_red.png"))
-    images.append(pygame.image.load("Texture/credits_yellow.png"))
     images.append(pygame.image.load("Texture/back_yellow.png"))
     images.append(pygame.image.load("Texture/back_red.png"))
     images.append(pygame.image.load("Texture/bomb.png"))
