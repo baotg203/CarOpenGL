@@ -125,10 +125,13 @@ def display():
             sounds[2].play(0)
         # Test if there's a collision between car & Walls , if true , then load you win screen
         if test_car_finish(carModel,finish):
-            sounds[13].set_volume(0.5)
-            sounds[13].play(0)
-            you_win = 1
-            start_game = 4
+            if carModel.coins == 9:
+                sounds[13].set_volume(0.5)
+                sounds[13].play(0)
+                you_win = 1
+                start_game = 4
+            else:
+                drawText(300, 500, "Need to collect all stars")
         # Draw Health Bar & Coins counter
         draw_health(carModel.health, cen)
         glPushMatrix()
@@ -219,6 +222,13 @@ def print_text(s, x, y):
     for char in s:
         glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, char)
 
+def drawText(x, y, text):
+    font = pygame.font.SysFont('arial', 64)                                                
+    textSurface = font.render(text, True, (255, 255, 66, 255), (0, 66, 0, 255))
+    textData = pygame.image.tostring(textSurface, "RGBA", True)
+    glWindowPos2d(x, y)
+    glDrawPixels(textSurface.get_width(), textSurface.get_height(), GL_RGBA, GL_UNSIGNED_BYTE, textData)
+
 
 def keyboard(key, x, y):
     global carModel,Go_Drive_Flag,Go_Back_Flag,Break_Flag,Song_Flag
@@ -258,7 +268,7 @@ def keyboard(key, x, y):
     if key == b"e" and start_game == 1:
         sounds[3].set_volume(0.2)
         sounds[3].play(0)
-    if key ==b'p'and start_game == 1:
+    if key ==b'f'and start_game == 1:
         if Song_Flag:
             sounds[8].stop()
             Song_Flag=False
