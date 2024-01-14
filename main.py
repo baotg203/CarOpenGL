@@ -156,14 +156,14 @@ def display():
         glLoadIdentity()
         glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 0, 1)
         glMatrixMode(GL_MODELVIEW)
-        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-250 and mouse_y <= 700-150:
-            draw_texture(480, 150, 720, 250, TRY_AGAIN_RED)
+        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-450 and mouse_y <= 700-350:
+            draw_texture(480, 350, 720, 450, TRY_AGAIN_RED)
         else:
-            draw_texture(480, 150, 720, 250, TRY_AGAIN_YEL)
-        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-130 and mouse_y <= 700-30:
-            draw_texture(480, 30, 720, 130, EXIT2_RED)
+            draw_texture(480, 350, 720, 450, TRY_AGAIN_YEL)
+        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-330 and mouse_y <= 700-230:
+            draw_texture(480, 230, 720, 330, EXIT2_RED)
         else:
-            draw_texture(480, 30, 720, 130, EXIT2_YEL)
+            draw_texture(480, 230, 720, 330, EXIT2_YEL)
         draw_texture(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, PLAY_AGAIN)
     # if you win , then load you win screen
     elif you_win == 1:
@@ -314,11 +314,11 @@ def mousePass(x, y):
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-250 and y <= 700-150:
+    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-450 and y <= 700-350:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-130 and y <= 700-30:
+    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-330 and y <= 700-230:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
@@ -347,7 +347,7 @@ def mouse(state, key, x, y):
     if x >= 260 and x <= 460 and y >= 600 and y <= 680 and key ==GLUT_LEFT_BUTTON and credits_sc == 1:
         credits_sc = 0
     # try Again
-    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-250 and y <= 700-150 and key ==GLUT_LEFT_BUTTON:
+    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-450 and y <= 700-350 and key ==GLUT_LEFT_BUTTON:
         carModel = car() # Make a new car or reset all param , we choose to create a new car
         # we need to reset all item's in maze
         reset_maze()
@@ -359,7 +359,7 @@ def mouse(state, key, x, y):
         reset_maze()
         you_win = 0
         start_game = 0
-    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-130 and y <= 700-30 and key ==GLUT_LEFT_BUTTON:
+    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-330 and y <= 700-230 and key ==GLUT_LEFT_BUTTON:
         os._exit(0)
         
 

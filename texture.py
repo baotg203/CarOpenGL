@@ -56,7 +56,7 @@ def load_texture():
     images.append(pygame.image.load("Texture/back_yellow.png"))
     images.append(pygame.image.load("Texture/back_red.png"))
     images.append(pygame.image.load("Texture/bomb.png"))
-    images.append(pygame.image.load("Texture/game_over.png"))
+    images.append(pygame.image.load("Texture/car_crash.jpg"))
     images.append(pygame.image.load("Texture/try_again_yellow.png"))
     images.append(pygame.image.load("Texture/try_again_red.png"))
     images.append(pygame.image.load("Texture/exit2_yellow.png"))
