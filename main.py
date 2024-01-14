@@ -85,7 +85,6 @@ def display():
             draw_texture(280, 240, 520, 320, CREDIT_RED)
         else:
             draw_texture(280, 240, 520, 320, CREDIT_YELLOW)
-
         # On EXIT button
         if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 480 and mouse_y <= 560:
             draw_texture(280, 140, 520, 220, EXIT_RED)
@@ -102,7 +101,7 @@ def display():
         glOrtho(cen[0] - 300, cen[0] + 300, cen[1] - 175, cen[1] + 175, -1, 1)
         glMatrixMode(GL_MODELVIEW)
         glLoadIdentity()
-        glClearColor(0.2, 0.2, 0.2, 0)
+        glClearColor(0, 0, 0, 0)
         # Test if there's a collision between car & Walls
         if test_car_walls(carModel, maze1):
             carModel.collosion = True
@@ -303,7 +302,7 @@ def mousePass(x, y):
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 380 and y <= 460 and start_game == 0:
+    elif start_game == 0 and credits_sc == 0and x >= 280 and x <= 520 and y >= 380 and y <= 460 and start_game == 0:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
@@ -335,7 +334,7 @@ def mouse(state, key, x, y):
     """
     mouse function is check it user is on a button and click on it or not
     """
-    global start_game, credits_sc, carModel,game_over,you_win
+    global start_game, carModel,game_over,you_win, credits_sc
     if x >= 280 and x <= 520 and y >= 280 and y <= 360 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
         start_game = 1
         sounds[9].stop()

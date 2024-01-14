@@ -17,10 +17,6 @@ class Collosion:
             return True
         return False
     
-
-    # Resource1 : https://gamedev.stackexchange.com/questions/43873/how-does-the-sat-collision-detection-algorithm-work
-    # Resource2 : https://gamedevelopment.tutsplus.com/tutorials/collision-detection-using-the-separating-axis-theorem--gamedev-169
-    
     def two_polygon_intersect(self, VerticesA ,VerticesB):
         """
         separating axis theorem implementation
