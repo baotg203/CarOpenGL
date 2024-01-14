@@ -38,7 +38,7 @@ sounds=[pygame.mixer.Sound("Sound/crash.wav"),
         pygame.mixer.Sound("Sound/mouse_point.wav"),
         pygame.mixer.Sound("Sound/car_reverse1.wav"),
         pygame.mixer.Sound("Sound/bomb.wav"),
-        pygame.mixer.Sound("Sound/bravo.wav")
+        pygame.mixer.Sound("Sound/tada.wav")
         ]
 sounds[8].set_volume(0.3)
 sounds[10].set_volume(0.5)
@@ -76,20 +76,20 @@ def display():
     elif start_game == 0:
         glLoadIdentity()
         # ON START Button
-        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 280 and mouse_y <= 360:
-            draw_texture(280, 340, 520, 420, START_RED)
+        if mouse_x >= 800 and mouse_x <= 1000 and mouse_y >= 280 and mouse_y <= 360:
+            draw_texture(800, 340, 1000, 420, START_RED)
         else:
-            draw_texture(280, 340, 520, 420, START_YELLOW)
+            draw_texture(800, 340, 1000, 420, START_YELLOW)
         # On CREDITS button
-        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 380 and mouse_y <= 460:
-            draw_texture(280, 240, 520, 320, CREDIT_RED)
+        if mouse_x >= 800 and mouse_x <= 1000 and mouse_y >= 380 and mouse_y <= 460:
+            draw_texture(800, 240, 1000, 320, CREDIT_RED)
         else:
-            draw_texture(280, 240, 520, 320, CREDIT_YELLOW)
+            draw_texture(800, 240, 1000, 320, CREDIT_YELLOW)
         # On EXIT button
-        if mouse_x >= 280 and mouse_x <= 520 and mouse_y >= 480 and mouse_y <= 560:
-            draw_texture(280, 140, 520, 220, EXIT_RED)
+        if mouse_x >= 800 and mouse_x <= 1000 and mouse_y >= 480 and mouse_y <= 560:
+            draw_texture(800, 140, 1000, 220, EXIT_RED)
         else:
-            draw_texture(280, 140, 520, 220, EXIT_YELLOW)
+            draw_texture(800, 140, 1000, 220, EXIT_YELLOW)
         draw_texture(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, START_SCREEN)
     # If We are is the game play , then run the game 
     elif start_game == 1:
@@ -156,14 +156,14 @@ def display():
         glLoadIdentity()
         glOrtho(0, WINDOW_WIDTH, 0, WINDOW_HEIGHT, 0, 1)
         glMatrixMode(GL_MODELVIEW)
-        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-250 and mouse_y <= 700-150:
-            draw_texture(480, 150, 720, 250, TRY_AGAIN_RED)
+        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-450 and mouse_y <= 700-350:
+            draw_texture(480, 350, 720, 450, TRY_AGAIN_RED)
         else:
-            draw_texture(480, 150, 720, 250, TRY_AGAIN_YEL)
-        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-130 and mouse_y <= 700-30:
-            draw_texture(480, 30, 720, 130, EXIT2_RED)
+            draw_texture(480, 350, 720, 450, TRY_AGAIN_YEL)
+        if mouse_x >= 480 and mouse_x <= 720 and mouse_y >= 700-330 and mouse_y <= 700-230:
+            draw_texture(480, 230, 720, 330, EXIT2_RED)
         else:
-            draw_texture(480, 30, 720, 130, EXIT2_YEL)
+            draw_texture(480, 230, 720, 330, EXIT2_YEL)
         draw_texture(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, PLAY_AGAIN)
     # if you win , then load you win screen
     elif you_win == 1:
@@ -298,15 +298,15 @@ def mousePass(x, y):
     mouse_y = y
     # Start
     
-    if start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 280 and y <= 360:
+    if start_game == 0 and credits_sc == 0 and x >= 800 and x <= 1000 and y >= 280 and y <= 360:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif start_game == 0 and credits_sc == 0and x >= 280 and x <= 520 and y >= 380 and y <= 460 and start_game == 0:
+    elif start_game == 0 and credits_sc == 0 and x >= 800 and x <= 1000 and y >= 380 and y <= 460 and start_game == 0:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif start_game == 0 and credits_sc == 0 and x >= 280 and x <= 520 and y >= 480 and y <= 560 and start_game == 0:
+    elif start_game == 0 and credits_sc == 0 and x >= 800 and x <= 1000 and y >= 480 and y <= 560 and start_game == 0:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
@@ -314,11 +314,11 @@ def mousePass(x, y):
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-250 and y <= 700-150:
+    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-450 and y <= 700-350:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
-    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-130 and y <= 700-30:
+    elif game_over == 1 and x >= 480 and x <= 720 and y >= 700-330 and y <= 700-230:
         if On_button == False:
             sounds[10].play(0)
             On_button = True
@@ -335,19 +335,19 @@ def mouse(state, key, x, y):
     mouse function is check it user is on a button and click on it or not
     """
     global start_game, carModel,game_over,you_win, credits_sc
-    if x >= 280 and x <= 520 and y >= 280 and y <= 360 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
+    if x >= 800 and x <= 1000 and y >= 280 and y <= 360 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
         start_game = 1
         sounds[9].stop()
         sounds[4].set_volume(0.2)
         sounds[4].play(0)
-    if x >= 280 and x <= 520 and y >= 380 and y <= 460 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
+    if x >= 800 and x <= 1000 and y >= 380 and y <= 460 and key == GLUT_LEFT_BUTTON  and start_game == 0 and credits_sc == 0:
         credits_sc = 1
-    if x >= 280 and x <= 520 and y >= 480 and y <= 560 and  key == GLUT_LEFT_BUTTON and start_game == 0 and credits_sc == 0:
+    if x >= 800 and x <= 1000 and y >= 480 and y <= 560 and  key == GLUT_LEFT_BUTTON and start_game == 0 and credits_sc == 0:
         os._exit(0) 
     if x >= 260 and x <= 460 and y >= 600 and y <= 680 and key ==GLUT_LEFT_BUTTON and credits_sc == 1:
         credits_sc = 0
     # try Again
-    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-250 and y <= 700-150 and key ==GLUT_LEFT_BUTTON:
+    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-450 and y <= 700-350 and key ==GLUT_LEFT_BUTTON:
         carModel = car() # Make a new car or reset all param , we choose to create a new car
         # we need to reset all item's in maze
         reset_maze()
@@ -359,7 +359,7 @@ def mouse(state, key, x, y):
         reset_maze()
         you_win = 0
         start_game = 0
-    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-130 and y <= 700-30 and key ==GLUT_LEFT_BUTTON:
+    if game_over == 1 and x >= 480 and x <= 720 and y >= 700-330 and y <= 700-230 and key ==GLUT_LEFT_BUTTON:
         os._exit(0)
         
 
